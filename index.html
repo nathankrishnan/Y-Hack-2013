@@ -5,15 +5,7 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="height=device-height,width=device-width,initial-scale=1.0,maximum-scale=1.0" >
 
-        <link rel="stylesheet" type="text/css" href="css/card.css" />
-
-        
-<<<<<<< HEAD
-        
-        
-=======
-        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
->>>>>>> ef29ab451ea506332b652eae4ece1ae9995e6f32
+        <link rel="stylesheet" type="text/css" href="css/circle.css" />
         <link rel="stylesheet" type="text/css" href="css/card.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
         <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -26,25 +18,155 @@
     <body>
 
         <!-- Home screen -->
-        <div data-role="page">
+        <section id="home" data-role="page" data-add-back-btn="true" data-back-btn-text="Back">
 
             <div data-role="panel" id="panel" data-position="left" data-theme="a" data-display="push"></div>
 
-<<<<<<< HEAD
+
             <div data-role="header" data-theme="b">
-=======
-            <div data-role="header">
-              <a data-iconpos="notext" data-role="button" data-icon="home" title="Home" href="#index">Home</a>
-              <h1>Supply Source</h1>
->>>>>>> ef29ab451ea506332b652eae4ece1ae9995e6f32
               <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
               <h1>Supply Source</h1>
-              <a data-iconpos="notext" data-role="button" data-icon="home" title="Home">Home</a>
+            </div>
+
+            <div data-role="content">
+                
+              <form>
+                
+                <input type="text" name="text-1" id="text-1" value="" placeholder="Username">
+                
+                <input type="password" name="text-2" id="text-2" value="" placeholder="Password">
+              </form>
+    
+            </div>
+        </section>
+
+        <!-- Registration Page -->
+        <section id="registration" data-role="page" data-add-back-btn="true" data-back-btn-text="Back">
+
+            <div data-role="panel" id="panel" data-position="left" data-theme="a" data-display="push"></div>
+
+
+            <div data-role="header" data-theme="b">
+              <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
+              <h1>Supply Source - Register</h1>
+            </div>
+
+            <div data-role="content">
+                
+              <form>
+                <center><h3>Create an Account</h3>
+
+                <input type="text" name="regUsername" id="regUsername" value="" placeholder="Username">
+                </br>
+                <input type="password" name="regPassword" id="regPassword" value="" placeholder="Password">
+                <input type="password" name="confirmPassword" id="confirmPassword" value="" placeholder="Confirm Password">
+
+                <fieldset data-role="selectallergies">
+                    <h3>Do you have any food allergies?</h3>
+                    <input type="checkbox" name="checkbox-1a" id="checkbox-1a">
+                    <label for="checkbox-1a">Lactose</label>
+                    
+                    <input type="checkbox" name="checkbox-2a" id="checkbox-2a">
+                    <label for="checkbox-2a">Eggs</label>
+                    
+                    <input type="checkbox" name="checkbox-3a" id="checkbox-3a">
+                    <label for="checkbox-3a">Fish</label>
+                    
+                    <input type="checkbox" name="checkbox-4a" id="checkbox-4a">
+                    <label for="checkbox-4a">Shellfish</label>
+                    
+                    <input type="checkbox" name="checkbox-5a" id="checkbox-5a">
+                    <label for="checkbox-5a">Tree Nuts</label>
+                    
+                    <input type="checkbox" name="checkbox-6a" id="checkbox-6a">
+                    <label for="checkbox-6a">Peanuts</label>
+                    
+                    <input type="checkbox" name="checkbox-7a" id="checkbox-7a">
+                    <label for="checkbox-7a">Wheat</label>
+                    
+                    <input type="checkbox" name="checkbox-8a" id="checkbox-8a">
+                    <label for="checkbox-8a">Soybeans</label>
+                    
+                    <input type="checkbox" name="checkbox-9a" id="checkbox-9a">
+                    <label for="checkbox-9a">Gluten</label>
+                </fieldset>
+                
+              </form>
+              <a href="#list" onclick="apiRequest()" data-role="button" data-mini="true" data-inline="true" data-icon="check" data-theme="b">Register</a>
+              </center>
+            </div>
+        </section>
+
+        <!-- Dietary Track -->
+        <section id="track" data-role="page" data-add-back-btn="true" data-back-btn-text="Back">
+
+            <div data-role="panel" id="panel" data-position="left" data-theme="a" data-display="push"></div>
+
+
+            <div data-role="header" data-theme="b">
+              <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
+              <h1>Supply Source - Track</h1>
+            </div>
+
+            <div data-role="content">
+              <center>
+                <h3>Select your track:</h3>
+                <div class="pregnant"><a href="#"><img src="http://www.ucl.ac.uk/news/news-articles/1006/pregnant.jpg" alt="" /></a>
+                </div>
+              </center>
+            </div>
+        </section>
+
+        <!-- Generate screen -->
+          <section id="generate" data-role="page" data-add-back-btn="true" data-back-btn-text="Back">
+
+
+            <div data-role="panel" id="panel" data-position="right" data-theme="c" data-display="push"></div>
+
+            <div data-role="header">
+              <a data-iconpos="notext" data-role="button" data-icon="home" title="Home" href="#home">Home</a>
+              <h1>Supply Source - Generate List</h1>
+              <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
             </div>
   
 
             <div data-role="content">
                 
+                 <form>
+
+                 <label for="slider-1">What is your price range?</label>
+                  <input type="range" name="slider-1" min="0" max="10" value="5" data-popup-enabled="true"  id="pricerange" step="1">
+                  <br/>
+
+                  <label for="slider-2">What is your target calorie intake?:</label>
+                  <input type="range" name="slider-2" min="1000" max="3000" value="2000" data-show-value="true"  id="calorieintake">
+                  <br/>
+
+                  <label for="slider-3">What timeframe are you shopping for?</label>
+                  <input type="range" name="slider-3" min="0" max="100" value="50" data-show-value="true" data-popup-enabled="true" id="timerange">
+                  <br/>
+
+                  <p><button class="topcoat-button" onclick="generateList()" href="#list">Generate List</button></p>
+                </form>   
+    
+            </div>
+
+        </section>
+
+        <!-- List screen -->
+          <section id="list" data-role="page" data-add-back-btn="true" data-back-btn-text="Back">
+
+
+            <div data-role="panel" id="panel" data-position="right" data-theme="c" data-display="push"></div>
+
+            <div data-role="header">
+              <a data-iconpos="notext" data-role="button" data-icon="home" title="Home" href="#home">Home</a>
+              <h1>Supply Source - Shopping List</h1>
+              <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
+            </div>
+  
+
+            <div data-role="content" id="list">
                 <ul class="now">
                   
                   <li><div class="card">
@@ -74,48 +196,14 @@
 
                   <div id="barcode"></div>
                 </ul>
-    
-            </div>
-        </div>
-
-        <!-- Generate screen -->
-        <div data-role="page">
-
-            <div data-role="panel" id="panel" data-position="right" data-theme="c" data-display="push"></div>
-
-            <div data-role="header">
-              <a data-iconpos="notext" data-role="button" data-icon="home" title="Home" href="#index">Home</a>
-              <h1>Supply Source - Generate List</h1>
-              <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
-            </div>
   
-
-            <div data-role="content">
-                
-                 <form>
-
-                  <label for="slider-1">What is your price range?</label>
-                  <input type="range" name="slider-1" id="slider-1" min="0" max="10" value="5" data-popup-enabled="true">
-                  <br/>
-
-                  <label for="slider-2">What is your target calorie intake?:</label>
-                  <input type="range" name="slider-2" id="slider-2" min="1000" max="3000" value="2000" data-show-value="true">
-                  <br/>
-
-                  <label for="slider-3">What timeframe are you shopping for?</label>
-                  <input type="range" name="slider-3" id="slider-3" min="0" max="100" value="50" data-show-value="true" data-popup-enabled="true">
-                  <br/>
-
-                  <p><button class="topcoat-button" onclick="barcodeScanner()">Scan Now</button></p>
-                </form>   
-    
             </div>
 
-        </div>
+        </section>
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="barcodescanner.js"></script>
-        <script type="text/javascript" src="application.js"></script> 
+        <script type="text/javascript" src="js/application.js"></script> 
 
     </body>
 </html>

@@ -42,9 +42,9 @@ function barcodeScanner(){
 var appid = "64ba9eac";
 var appkey = "fdb2032513e161995ee9a20b03a33104";
 
-function apiRequest(phrase, cal_max, allergen_contains_milk, allergen_contains_eggs, allergen_contains_fish, allergen_contains_shellfish, allergen_contains_tree_nuts, allergen_contains_peanuts, allergen_contains_wheat, allergen_contains_soybeans, allergen_contains_gluten){
+function apiRequest(phrase, max, cal_max, allergen_contains_milk, allergen_contains_eggs, allergen_contains_fish, allergen_contains_shellfish, allergen_contains_tree_nuts, allergen_contains_peanuts, allergen_contains_wheat, allergen_contains_soybeans, allergen_contains_gluten){
 
-        var apiURL = 'https://api.nutritionix.com/v1_1/search/' + phrase + '?results=0%3A20&cal_min=0&cal_max=' + cal_max + '&fields=*&allergen_contains_milk=' + allergen_contains_milk + '&allergen_contains_eggs=' + allergen_contains_eggs + '&allergen_contains_fish=' + allergen_contains_fish + '&allergen_contains_shellfish=' + allergen_contains_shellfish + '&allergen_contains_tree_nuts=' + allergen_contains_tree_nuts + '&allergen_contains_peanuts=' + allergen_contains_peanuts + '&allergen_contains_wheat=' + allergen_contains_wheat + '&allergen_contains_soybeans=' + allergen_contains_soybeans + '&allergen_contains_gluten=' + allergen_contains_gluten + '&appId=64ba9eac&appKey=fdb2032513e161995ee9a20b03a33104';
+        var apiURL = 'https://api.nutritionix.com/v1_1/search/' + phrase + '?results=0%3A' + max + '&cal_min=0&cal_max=' + cal_max + '&fields=*&allergen_contains_milk=' + allergen_contains_milk + '&allergen_contains_eggs=' + allergen_contains_eggs + '&allergen_contains_fish=' + allergen_contains_fish + '&allergen_contains_shellfish=' + allergen_contains_shellfish + '&allergen_contains_tree_nuts=' + allergen_contains_tree_nuts + '&allergen_contains_peanuts=' + allergen_contains_peanuts + '&allergen_contains_wheat=' + allergen_contains_wheat + '&allergen_contains_soybeans=' + allergen_contains_soybeans + '&allergen_contains_gluten=' + allergen_contains_gluten + '&appId=64ba9eac&appKey=fdb2032513e161995ee9a20b03a33104';
 
             alert(apiURL);
 
@@ -53,8 +53,34 @@ function apiRequest(phrase, cal_max, allergen_contains_milk, allergen_contains_e
             type: 'GET',
             dataType: 'json',
             success: function(data){
+                console.log(data);
                 return data;
             }
         });
     
 }
+
+function generateList(){
+        
+        location.href='#list';
+
+        var timerange = $('#timerange').val();
+        var calorieintake = $('#calorieintake').val()*3;
+
+        console.log(timerange);
+        console.log(calorieintake);
+
+        apiRequest('salad', timerange, calorieintake, false, false, false, false, false, false, false, false, false);
+
+
+}
+
+
+
+
+
+
+
+
+
+
