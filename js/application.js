@@ -1,3 +1,10 @@
+$('form').submit(function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+});
+
+
+
 function serverRequest(recordID){
     $.ajax({
         url: 'http://dry-bayou-7910.herokuapp.com/renderjson/' + recordID + '?callback=jsoncallback',
@@ -75,7 +82,110 @@ function generateList(){
 
 }
 
+function register(){
 
+
+$("#registerbutton").click(function () { 
+    var regUsername = $("#regUsername").val();
+	localStorage.setItem("regUsername", regUsername);      //******* setItem()
+	var regPassword = $("#regPassword").val();
+    var confirmPassword = $("#confirmPassword").val();
+    if(regPassword != confirmPassword){
+		alert("Password does not match!");
+	}else{
+	localStorage.setItem("regPassword", regPassword);      //******* setItem()
+	}
+	//allergen_contains_milk
+	if( $('#checkbox_1a').is(':checked')){
+		localStorage.setItem("allergen_contains_milk","true");
+	}
+	else{
+		localStorage.setItem("allergen_contains_milk","false");
+	}
+	//allergen_contains_eggs
+	if( $('#checkbox_2a').is(':checked')){
+		localStorage.setItem("allergen_contains_eggs","true");
+	}
+	else{
+		localStorage.setItem("allergen_contains_eggs","false");
+	}
+	
+	//allergen_contains_fish
+	if( $('#checkbox_3a').is(':checked')){
+		localStorage.setItem("allergen_contains_fish","true");
+	}
+	else{
+		localStorage.setItem("allergen_contains_fish","false");
+	}
+	
+	//allergen_contains_shellfish
+	if( $('#checkbox_4a').is(':checked')){
+		localStorage.setItem("allergen_contains_shellfish","true");
+	}
+	else{
+		localStorage.setItem("allergen_contains_shellfish","false");
+	}
+	
+	//allergen_contains_tree_nuts
+	if( $('#checkbox_5a').is(':checked')){
+		localStorage.setItem("allergen_contains_tree_nuts","true");
+	}
+	else{
+		localStorage.setItem("allergen_contains_tree_nuts","false");
+	}
+	
+	//allergen_contains_peanuts
+	if( $('#checkbox_6a').is(':checked')){
+		localStorage.setItem("allergen_contains_peanuts","true");
+	}
+	else{
+		localStorage.setItem("allergen_contains_peanuts","false");
+	}
+	
+	//allergen_contains_wheat
+	if( $('#checkbox_7a').is(':checked')){
+		localStorage.setItem("allergen_contains_wheat","true");
+	}
+	else{
+		localStorage.setItem("allergen_contains_wheat","false");
+	}
+	
+	//allergen_contains_soybeans
+	if( $('#checkbox_8a').is(':checked')){
+		localStorage.setItem("allergen_contains_soybeans","true");
+	}
+	else{
+		localStorage.setItem("allergen_contains_soybeans","false");
+	}
+	
+	//allergen_contains_gluten
+	if( $('#checkbox_9a').is(':checked')){
+		localStorage.setItem("allergen_contains_gluten","true");
+	}
+	else{
+		localStorage.setItem("allergen_contains_gluten","false");
+	}
+	
+    
+    alert( "username: " + localStorage.getItem("regUsername") +
+	"\nregPassword: " + localStorage.getItem("regPassword") +
+	"\nallergen_contains_milk: " + localStorage.getItem("allergen_contains_milk") + 
+	"\nallergen_contains_eggs: " + localStorage.getItem("allergen_contains_eggs") + 
+	"\nallergen_contains_fish: " + localStorage.getItem("allergen_contains_fish") + 
+	"\nallergen_contains_shellfish: " + localStorage.getItem("allergen_contains_shellfish") + 
+	"\nallergen_contains_tree_nuts: " + localStorage.getItem("allergen_contains_tree_nuts") + 
+	"\nallergen_contains_peanuts: " + localStorage.getItem("allergen_contains_peanuts") + 
+	"\nallergen_contains_wheat: " + localStorage.getItem("allergen_contains_wheat") + 
+	"\nallergen_contains_soybeans: " + localStorage.getItem("allergen_contains_soybeans") + 
+	"\nallergen_contains_gluten: " + localStorage.getItem("allergen_contains_gluten"));  //******* getItem()
+    //var value = localStorage[key]; also works
+    //var shortkey = value.replace(prefix, "");
+	
+});
+
+
+
+}
 
 
 
