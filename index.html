@@ -25,6 +25,7 @@
                 <li data-theme="a">Menu</li>
                 <li data-icon="home" data-theme="b"><a onclick="location.href='#home'" data-rel="#home" data-inline="true" data-rel="dialog">Home</a></li>
                 <li data-icon="flat-man" data-theme="b"><a onclick="location.href='#registration'" data-rel="#registration" data-inline="true">Registration</a></li>
+                <li data-icon="flat-plus" data-theme="b"><a onclick="location.href='#generate'" data-rel="#generate" data-inline="true">Generate List</a></li>
                 <li data-icon="flat-checkround" data-theme="b"><a onclick="location.href='#track'" data-rel="#track" data-inline="true">Select Track</a></li>
                 <li data-icon="flat-new" data-theme="b"><a onclick="location.href='#list'" data-rel="#list" data-inline="true">Grocery List</a></li>
               </ul>  
@@ -56,6 +57,7 @@
                 <li data-theme="a">Menu</li>
                 <li data-icon="home" data-theme="b"><a onclick="location.href='#home'" data-rel="#home" data-inline="true" data-rel="dialog">Home</a></li>
                 <li data-icon="flat-man" data-theme="b"><a onclick="location.href='#registration'" data-rel="#registration" data-inline="true">Registration</a></li>
+                <li data-icon="flat-plus" data-theme="b"><a onclick="location.href='#generate'" data-rel="#generate" data-inline="true">Generate List</a></li>
                 <li data-icon="flat-checkround" data-theme="b"><a onclick="location.href='#track'" data-rel="#track" data-inline="true">Select Track</a></li>
                 <li data-icon="flat-new" data-theme="b"><a onclick="location.href='#list'" data-rel="#list" data-inline="true">Grocery List</a></li>
               </ul>  
@@ -125,6 +127,7 @@
                 <li data-theme="a">Menu</li>
                 <li data-icon="home" data-theme="b"><a onclick="location.href='#home'" data-rel="#home" data-inline="true" data-rel="dialog">Home</a></li>
                 <li data-icon="flat-man" data-theme="b"><a onclick="location.href='#registration'" data-rel="#registration" data-inline="true">Registration</a></li>
+                <li data-icon="flat-plus" data-theme="b"><a onclick="location.href='#generate'" data-rel="#generate" data-inline="true">Generate List</a></li>
                 <li data-icon="flat-checkround" data-theme="b"><a onclick="location.href='#track'" data-rel="#track" data-inline="true">Select Track</a></li>
                 <li data-icon="flat-new" data-theme="b"><a onclick="location.href='#list'" data-rel="#list" data-inline="true">Grocery List</a></li>
               </ul>  
@@ -155,15 +158,16 @@
                 <li data-theme="a">Menu</li>
                 <li data-icon="home" data-theme="b"><a onclick="location.href='#home'" data-rel="#home" data-inline="true" data-rel="dialog">Home</a></li>
                 <li data-icon="flat-man" data-theme="b"><a onclick="location.href='#registration'" data-rel="#registration" data-inline="true">Registration</a></li>
+                <li data-icon="flat-plus" data-theme="b"><a onclick="location.href='#generate'" data-rel="#generate" data-inline="true">Generate List</a></li>
                 <li data-icon="flat-checkround" data-theme="b"><a onclick="location.href='#track'" data-rel="#track" data-inline="true">Select Track</a></li>
                 <li data-icon="flat-new" data-theme="b"><a onclick="location.href='#list'" data-rel="#list" data-inline="true">Grocery List</a></li>
               </ul>  
             </div>
 
-            <div data-role="header">
-              <a data-iconpos="notext" data-role="button" data-icon="home" title="Home" href="#home">Home</a>
-              <h1>Dietary Preferences</h1>
+            <div data-role="header" data-theme="b">
               <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
+              <h1>Dietary Preferences</h1>
+              
             </div>
   
 
@@ -180,7 +184,7 @@
                   <br/>
 
                   <label for="slider-3">What timeframe are you shopping for?</label>
-                  <input type="range" name="slider-3" min="0" max="100" value="50" data-show-value="true" data-popup-enabled="true" id="timerange">
+                  <input type="range" name="slider-3" min="1" max="15" value="7" data-show-value="true" data-popup-enabled="true" id="timerange">
                   <br/>
 
                   <p><button class="topcoat-button" onclick="generateList()" href="#list">Generate List</button></p>
@@ -191,7 +195,7 @@
         </section>
 
         <!-- List screen -->
-          <section id="list" data-role="page" data-add-back-btn="true" data-back-btn-text="Back">
+          <section id="list" data-role="page" data-add-back-btn="true" data-back-btn-text="Back" >
 
 
             <!-- Navigation Menu -->
@@ -201,6 +205,7 @@
                 <li data-icon="home" data-theme="b"><a onclick="location.href='#home'" data-rel="#home" data-inline="true" data-rel="dialog">Home</a></li>
                 <li data-icon="flat-man" data-theme="b"><a onclick="location.href='#registration'" data-rel="#registration" data-inline="true">Registration</a></li>
                 <li data-icon="flat-checkround" data-theme="b"><a onclick="location.href='#track'" data-rel="#track" data-inline="true">Select Track</a></li>
+                <li data-icon="flat-plus" data-theme="b"><a onclick="location.href='#generate'" data-rel="#generate" data-inline="true">Generate List</a></li>
                 <li data-icon="flat-new" data-theme="b"><a onclick="location.href='#list'" data-rel="#list" data-inline="true">Grocery List</a></li>
               </ul>  
             </div>
@@ -212,10 +217,12 @@
             </div>
   
 
-            <div data-role="content" id="list">
+            <div data-role="content" id="list" style="background-color:white">
                 <ul class="now">
+
+                  <div id="populate"></div>
                   
-                  <li><div class="card">
+<!--              <li><div class="card">
                     <p class="card-title">Trader Joe's Organic Chicken</p>
                     <p><img src="http://appelfellerarts.com/wp-content/uploads/2012/07/TJ_bsb.jpg" class="full" /></p>
                     <p>25g Protein </p>
@@ -231,11 +238,11 @@
                   <li><div class="card">
                     <p class="card-title">Cards Are Repeatable</p>
                     <p>We can have as many of these on a page as we like.</p>
-                  </div></li>
+                  </div></li> -->
                 
+                  <!--scanner button-->
                   <li><div class="card">
-                    <p class="card-title">Scan Test</p>
-                
+                    <p class="card-title">Scan Test</p>                 
                     <p id="barcode">Waiting for scan...</p>
                     <p><button class="topcoat-button" onclick="barcodeScanner()">Scan Now</button></p>
                   </div></li>
@@ -246,6 +253,7 @@
             </div>
 
         </section>
+
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="barcodescanner.js"></script>

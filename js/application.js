@@ -53,15 +53,21 @@ function apiRequest(phrase, max, cal_max, allergen_contains_milk, allergen_conta
 
         var apiURL = 'https://api.nutritionix.com/v1_1/search/' + phrase + '?results=0%3A' + max + '&cal_min=0&cal_max=' + cal_max + '&fields=*&allergen_contains_milk=' + allergen_contains_milk + '&allergen_contains_eggs=' + allergen_contains_eggs + '&allergen_contains_fish=' + allergen_contains_fish + '&allergen_contains_shellfish=' + allergen_contains_shellfish + '&allergen_contains_tree_nuts=' + allergen_contains_tree_nuts + '&allergen_contains_peanuts=' + allergen_contains_peanuts + '&allergen_contains_wheat=' + allergen_contains_wheat + '&allergen_contains_soybeans=' + allergen_contains_soybeans + '&allergen_contains_gluten=' + allergen_contains_gluten + '&appId=64ba9eac&appKey=fdb2032513e161995ee9a20b03a33104';
 
-            alert(apiURL);
+        alert(apiURL);
 
         $.ajax({
             url: apiURL,
             type: 'GET',
             dataType: 'json',
             success: function(data){
-                console.log(data);
-                return data;
+                
+                for(var i=0;i<data.total_hits;i++){
+
+                    var appendString = '<li><div class="card"><p class="card-title">' + data.hits[i].fields.item_name + '</p><p><b>Total Calories:</b> ' + data.hits[i].fields.nf_calories + '</p><p><b>Total Fat:</b> ' + data.hits[i].fields.nf_total_fat +  '</p><p><b>Protein:</b> ' + data.hits[i].fields.nf_protein + 'g' + '</p></div></li>';
+
+                    $('#populate').append(appendString);
+                }
+
             }
         });
     
@@ -71,14 +77,13 @@ function generateList(){
         
         location.href='#list';
 
-        var timerange = $('#timerange').val();
-        var calorieintake = $('#calorieintake').val()*3;
+        var timerange = $('#timerange').val()*3;
+        var calorieintake = $('#calorieintake').val();
 
-        console.log(timerange);
-        console.log(calorieintake);
+        // console.log(timerange);
+        // console.log(calorieintake);
 
-        apiRequest('salad', timerange, calorieintake, false, false, false, false, false, false, false, false, false);
-
+        apiRequest('', timerange, calorieintake, localStorage.getItem("allergen_contains_milk"), localStorage.getItem("allergen_contains_eggs"), localStorage.getItem("allergen_contains_fish"), localStorage.getItem("allergen_contains_shellfish"), localStorage.getItem("allergen_contains_tree_nuts"), localStorage.getItem("allergen_contains_peanuts"), localStorage.getItem("allergen_contains_wheat"), localStorage.getItem("allergen_contains_soybeans"), localStorage.getItem("allergen_contains_gluten"));
 
 }
 
@@ -167,17 +172,20 @@ $("#registerbutton").click(function () {
 	}
 	
     
-    alert( "username: " + localStorage.getItem("regUsername") +
-	"\nregPassword: " + localStorage.getItem("regPassword") +
-	"\nallergen_contains_milk: " + localStorage.getItem("allergen_contains_milk") + 
-	"\nallergen_contains_eggs: " + localStorage.getItem("allergen_contains_eggs") + 
-	"\nallergen_contains_fish: " + localStorage.getItem("allergen_contains_fish") + 
-	"\nallergen_contains_shellfish: " + localStorage.getItem("allergen_contains_shellfish") + 
-	"\nallergen_contains_tree_nuts: " + localStorage.getItem("allergen_contains_tree_nuts") + 
-	"\nallergen_contains_peanuts: " + localStorage.getItem("allergen_contains_peanuts") + 
-	"\nallergen_contains_wheat: " + localStorage.getItem("allergen_contains_wheat") + 
-	"\nallergen_contains_soybeans: " + localStorage.getItem("allergen_contains_soybeans") + 
-	"\nallergen_contains_gluten: " + localStorage.getItem("allergen_contains_gluten"));  //******* getItem()
+    location.href='#generate';
+
+
+ //    alert( "username: " + localStorage.getItem("regUsername") +
+	// "\nregPassword: " + localStorage.getItem("regPassword") +
+	// "\nallergen_contains_milk: " + localStorage.getItem("allergen_contains_milk") + 
+	// "\nallergen_contains_eggs: " + localStorage.getItem("allergen_contains_eggs") + 
+	// "\nallergen_contains_fish: " + localStorage.getItem("allergen_contains_fish") + 
+	// "\nallergen_contains_shellfish: " + localStorage.getItem("allergen_contains_shellfish") + 
+	// "\nallergen_contains_tree_nuts: " + localStorage.getItem("allergen_contains_tree_nuts") + 
+	// "\nallergen_contains_peanuts: " + localStorage.getItem("allergen_contains_peanuts") + 
+	// "\nallergen_contains_wheat: " + localStorage.getItem("allergen_contains_wheat") + 
+	// "\nallergen_contains_soybeans: " + localStorage.getItem("allergen_contains_soybeans") + 
+	// "\nallergen_contains_gluten: " + localStorage.getItem("allergen_contains_gluten"));  //******* getItem()
     //var value = localStorage[key]; also works
     //var shortkey = value.replace(prefix, "");
 	
