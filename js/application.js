@@ -34,7 +34,27 @@ function barcodeScanner(){
             scanResult = result.text;
             alert(scanResult);
 
-            serverRequest(scanResult);
+
+            $.ajax({
+                url: "https://api.nutritionix.com/v1_1/item?upc=" + scanResult + "&appId=64ba9eac&appKey=fdb2032513e161995ee9a20b03a33104",
+                type: 'GET',
+                dataType: 'json',
+                success: function(data){
+                    
+                    //console.log(data);
+                    //for(var i=0;i<data.total_hits;i++){
+
+                        var appendString = '<li><div class="card"><p class="card-title">' + data.item_name + '</p><p><b>Total Calories:</b> ' + data.nf_calories + '</p><p><b>Total Fat:</b> ' + data.nf_total_fat +  '</p><p><b>Protein:</b> ' + data.nf_protein + 'g' + '</p></div></li>';
+
+                        //$('#populate').html('');
+                        $('#populate').append(appendString);
+                    //}
+
+                }
+            });
+            
+
+            //serverRequest(scanResult);
 
 
         }, 
@@ -65,6 +85,7 @@ function apiRequest(phrase, max, cal_max, allergen_contains_milk, allergen_conta
 
                     var appendString = '<li><div class="card"><p class="card-title">' + data.hits[i].fields.item_name + '</p><p><b>Total Calories:</b> ' + data.hits[i].fields.nf_calories + '</p><p><b>Total Fat:</b> ' + data.hits[i].fields.nf_total_fat +  '</p><p><b>Protein:</b> ' + data.hits[i].fields.nf_protein + 'g' + '</p></div></li>';
 
+                    $('#populate').html('');
                     $('#populate').append(appendString);
                 }
 
@@ -189,9 +210,7 @@ $("#registerbutton").click(function () {
     //var value = localStorage[key]; also works
     //var shortkey = value.replace(prefix, "");
 	
-});
-
-
+    });
 
 }
 
