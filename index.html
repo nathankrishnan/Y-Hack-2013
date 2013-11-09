@@ -4,12 +4,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="height=device-height,width=device-width,initial-scale=1.0,maximum-scale=1.0" >
+<<<<<<< HEAD
 
         <link rel="stylesheet" type="text/css" href="css/capplication.css" />
         <link rel="stylesheet" type="text/css" href="css/card.css" />
         <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-light.css" />
 
+=======
+        
+        <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
+        <!-- <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.min.css" /> -->
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+        <link rel="stylesheet" type="text/css" href="css/card.css" />
+>>>>>>> b11b1a16551972ba410e4d50f97b5d2b49a74237
         <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
         
         
 
@@ -18,11 +27,16 @@
     <body>
 
         <!-- Home screen -->
-        <div class="topcoat-navigation-bar">
-            <div class="topcoat-navigation-bar__item center full">
-                <h1 class="topcoat-navigation-bar__title">Supply Source</h1>
+        <div data-role="page">
+
+            <div data-role="panel" id="panel" data-position="right" data-theme="c" data-display="push"></div>
+
+            <div data-role="header">
+              <a data-iconpos="notext" data-role="button" data-icon="home" title="Home">Home</a>
+              <h1>Supply Source</h1>
+              <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
             </div>
-        </div> 
+  
 
             <div data-role="content">
                 
