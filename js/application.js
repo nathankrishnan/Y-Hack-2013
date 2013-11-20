@@ -5,57 +5,50 @@ $('form').submit(function(e) {
 
 
 
-function serverRequest(recordID){
-    $.ajax({
-        url: 'http://dry-bayou-7910.herokuapp.com/renderjson/' + recordID + '?callback=jsoncallback',
-        type: "GET",
-        dataType: 'jsonp',
+// function serverRequest(recordID){
+//     $.ajax({
+//         url: 'http://dry-bayou-7910.herokuapp.com/renderjson/' + recordID + '?callback=jsoncallback',
+//         type: "GET",
+//         dataType: 'jsonp',
         
-        timeout: 5000,
-        success: function(data){
+//         timeout: 5000,
+//         success: function(data){
 
-            alert(data.name + " | " + data.growth_conditions)
+//             alert(data.name + " | " + data.growth_conditions)
 
-        },
-        error: function(){
-            console.log('There was an error loading the data.');
-        }
-    });
-}
+//         },
+//         error: function(){
+//             console.log('There was an error loading the data.');
+//         }
+//     });
+// }
 
 function barcodeScanner(){
-    // Temporarily disabiling alert test since scanner is working
-    // alert("clicked");
+
     var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
     scanner.scan(
         function (result) {
 
             scanResult = result.text;
-            alert(scanResult);
-
+            //alert(scanResult);
 
             $.ajax({
                 url: "https://api.nutritionix.com/v1_1/item?upc=" + scanResult + "&appId=64ba9eac&appKey=fdb2032513e161995ee9a20b03a33104",
                 type: 'GET',
                 dataType: 'json',
                 success: function(data){
-                    
                     //console.log(data);
-                    //for(var i=0;i<data.total_hits;i++){
-
                         var appendString = '<li><div class="card"><p class="card-title">' + data.item_name + '</p><p><b>Total Calories:</b> ' + data.nf_calories + '</p><p><b>Total Fat:</b> ' + data.nf_total_fat +  '</p><p><b>Protein:</b> ' + data.nf_protein + 'g' + '</p></div></li>';
 
-                        //$('#populate').html('');
-                        $('#populate').append(appendString);
-                    //}
+                        //$('#populate').prepend(appendString);
 
+                        $('#populate').prepend(
+						    $(appendString).hide().fadeIn('slow')
+						);
                 }
             });
-            
-
             //serverRequest(scanResult);
-
 
         }, 
         function (error) {
@@ -73,19 +66,22 @@ function apiRequest(phrase, max, cal_max, allergen_contains_milk, allergen_conta
 
         var apiURL = 'https://api.nutritionix.com/v1_1/search/' + phrase + '?results=0%3A' + max + '&cal_min=0&cal_max=' + cal_max + '&fields=*&allergen_contains_milk=' + allergen_contains_milk + '&allergen_contains_eggs=' + allergen_contains_eggs + '&allergen_contains_fish=' + allergen_contains_fish + '&allergen_contains_shellfish=' + allergen_contains_shellfish + '&allergen_contains_tree_nuts=' + allergen_contains_tree_nuts + '&allergen_contains_peanuts=' + allergen_contains_peanuts + '&allergen_contains_wheat=' + allergen_contains_wheat + '&allergen_contains_soybeans=' + allergen_contains_soybeans + '&allergen_contains_gluten=' + allergen_contains_gluten + '&appId=64ba9eac&appKey=fdb2032513e161995ee9a20b03a33104';
 
-        alert(apiURL);
+        console.log(apiURL);
 
         $.ajax({
             url: apiURL,
             type: 'GET',
             dataType: 'json',
             success: function(data){
-                
-                for(var i=0;i<data.total_hits;i++){
+				
+
+                $('#populate').html('');                
+            	console.log(data);
+
+                for(var i=0;i<10;i++){
 
                     var appendString = '<li><div class="card"><p class="card-title">' + data.hits[i].fields.item_name + '</p><p><b>Total Calories:</b> ' + data.hits[i].fields.nf_calories + '</p><p><b>Total Fat:</b> ' + data.hits[i].fields.nf_total_fat +  '</p><p><b>Protein:</b> ' + data.hits[i].fields.nf_protein + 'g' + '</p></div></li>';
 
-                    $('#populate').html('');
                     $('#populate').append(appendString);
                 }
 
