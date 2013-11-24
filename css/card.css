@@ -1,10 +1,11 @@
 /* Card Interface */
 
 body {
-    background: #e7e7e7;
-    min-height: 100%;
+/*    background: #222;
+*/    min-height: 100%;
     margin: auto;
 }
+
 ul.now {
     height: 100%;
     float: left;
@@ -18,7 +19,7 @@ ul.now li {
     /* Fix for Android width */
     min-width:94.3%; 
 }
-div.card {
+/*div.card {
     background: #fff;
     position: relative;
     padding: 15px;
@@ -29,6 +30,18 @@ div.card {
     -webkit-border-radius: 2px;
     border-radius: 2px;
     }
+*/
+.card {
+  padding:1.5rem;
+  box-shadow:0 1px 2px #aaa;
+  background:white;
+  margin:0 0.5rem 0.5rem;
+  border-radius:3px;
+  user-select:none;
+  animation:fly-in-from-left .5s 1s ease both;
+  transform-origin:top left;
+}
+
     div.card p {
         margin: 0 0 15px 0;
     }
@@ -37,7 +50,6 @@ div.card {
     }
     div.card p.url {
         border-top: 1px solid #e5e5e5;
-        background-image: url('http://www.eriklindemann.com/wp-content/uploads/2013/05/url.png');
         background-repeat: no-repeat;
         padding: 6px 0 0 30px;
         height: 30px;
@@ -55,3 +67,12 @@ div.card {
     width: 100%;
     /* margin: 0 0 15px -15px; */
     }
+
+.boxclose{
+    float:right;
+    margin-top:-25px;
+    margin-right:-10px;
+    color: #d5d5d5;
+    font-size: 25px;
+    padding: 11px 3px;
+}

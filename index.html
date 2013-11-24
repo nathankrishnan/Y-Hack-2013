@@ -190,8 +190,7 @@
         </section>
 
         <!-- List screen -->
-          <section id="list" data-role="page" data-add-back-btn="true" data-back-btn-text="Back" >
-
+          <section id="list" data-role="page" data-add-back-btn="true" data-back-btn-text="Back" style="background-color:#efefef;">
 
             <!-- Navigation Menu -->          
             <div data-role="panel" id="panel" data-position="left" data-theme="a" data-display="push">
@@ -204,13 +203,14 @@
                 <li data-icon="flat-new" data-theme="a"><a onclick="location.href='#list'" data-rel="#list" data-inline="true">Grocery List</a></li>
               </ul>  
             </div>
+
             <div data-role="header" data-theme="b">
               <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
               <h1>GroceryList++</h1>
             </div>
   
 
-            <div data-role="content" id="list" style="background-color:white">
+            <div data-role="content" id="list" style="background-color:#efefef;">
                 <ul class="now">
 
                   <div id="populate"></div>
@@ -220,11 +220,13 @@
                     <p class="card-title">Scan Items</p>                 
                     <p id="barcode">Waiting for scan...</p>
                     <p><button data-theme="b" onclick="barcodeScanner()">Scan Now</button></p>
+                    
                   </div></li>
 
-                  <div id="barcode"></div>
+
                 </ul>
-  
+                
+
             </div>
 
         </section>
