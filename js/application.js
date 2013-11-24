@@ -4,7 +4,8 @@ $('form').submit(function(e) {
 });
 
 $('body').on('click', 'a.boxclose', function() {
-    $(this).parent().parent().slideUp();
+    $(this).parent().toggleClass('hide').toggleClass('show');
+    // return false;
 });
 
 // function serverRequest(recordID){
@@ -41,7 +42,7 @@ function barcodeScanner(){
                 dataType: 'json',
                 success: function(data){
                     //console.log(data);
-                        var appendString = '<li><div class="card"><a class="boxclose">X</a><p class="card-title">' + data.item_name + '</p><p><b>Total Calories:</b> ' + data.nf_calories + '</p><p><b>Total Fat:</b> ' + data.nf_total_fat +  '</p><p><b>Protein:</b> ' + data.nf_protein + 'g' + '</p></div></li>';
+                        var appendString = '<li><div class="card show"><a class="boxclose">X</a><p class="card-title">' + data.item_name + '</p><p><b>Total Calories:</b> ' + data.nf_calories + '</p><p><b>Total Fat:</b> ' + data.nf_total_fat +  '</p><p><b>Protein:</b> ' + data.nf_protein + 'g' + '</p></div></li>';
 
                         //$('#populate').prepend(appendString);
 
@@ -82,7 +83,7 @@ function apiRequest(phrase, max, cal_max, allergen_contains_milk, allergen_conta
 
                 for(var i=0;i<10;i++){
 
-                    var appendString = '<li><div class="card"><a class="boxclose">X</a><p class="card-title">' + data.hits[i].fields.item_name + '</p><p><b>Total Calories:</b> ' + data.hits[i].fields.nf_calories + '</p><p><b>Total Fat:</b> ' + data.hits[i].fields.nf_total_fat +  '</p><p><b>Protein:</b> ' + data.hits[i].fields.nf_protein + 'g' + '</p></div></li>';
+                    var appendString = '<li><div class="card show"><a class="boxclose">X</a><p class="card-title">' + data.hits[i].fields.item_name + '</p><p><b>Total Calories:</b> ' + data.hits[i].fields.nf_calories + '</p><p><b>Total Fat:</b> ' + data.hits[i].fields.nf_total_fat +  '</p><p><b>Protein:</b> ' + data.hits[i].fields.nf_protein + 'g' + '</p></div></li>';
 
                     $('#populate').append(appendString);
                 }
