@@ -4,7 +4,7 @@ $('form').submit(function(e) {
 });
 
 $('body').on('click', 'a.boxclose', function() {
-    $(this).parent().parent().slideUp();
+    $(this).parent().parent().hide();
 });
 
 // function serverRequest(recordID){
